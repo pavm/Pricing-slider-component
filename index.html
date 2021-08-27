@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--<meta http-equiv="refresh" content="3">-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
+
+  <title>Frontend Mentor | Interactive pricing component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    body {background-image: url("images/bg-pattern.svg"); background-color: hsl(230, 100%, 99%); height: auto; width: 100%; background-repeat: no-repeat; box-sizing: border-box; font-family: 'Manrope'; width: 100%; height: 100%;
+   overflow-x: hidden;}
+
+    .container {display: flex; flex-wrap: wrap; justify-content: center; align-items: center; flex-flow: column;}
+
+    .flex-row {display: flex; flex-wrap: wrap; justify-content: center; align-items: center; flex-flow: row;}
+
+    .flex-row-top {display: flex; flex-wrap: wrap; justify-content: center; align-items: center; flex-flow: row;}
+
+    .flex-row-end {display: flex; flex-wrap: wrap; justify-content:flex-end; align-items: center; flex-flow: row; padding-right: 3rem}
+
+    .flex-row-even {display: flex; flex-wrap: wrap; justify-content:space-around; align-items: center; flex-flow: row; padding: 0.5rem;}
+
+    .flex-row-left {display: flex; flex-wrap: wrap; justify-content: flex-start; align-items:left; flex-flow: row; align-self: left;}
+
+    .container-left {display: flex; flex-wrap: wrap; justify-content: left; align-items: left; flex-flow: column;}
+
+
+    .text-container {background-image: url("images/pattern-circles.svg"); background-repeat: no-repeat; background-position: center; text-align: center; padding-top: 4rem; padding-bottom: 4rem; line-height: 0.4rem; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; flex-flow: column;}
+    .container-header {font-weight: 900; font-size: 1.5rem}
+    .container-text {font-weight: normal; color: hsl(225, 20%, 60%); line-height: 1.4rem; font-size: 1rem; padding-left: 1.5rem; padding-right: 1.5rem}
+
+    .panel {background-color: white; width: 40%; border-radius: 10px;  -webkit-box-shadow: 2px 4px 8px hsl(223, 50%, 87%);
+-moz-box-shadow: 2px 4px 8px hsl(223, 50%, 87%); box-shadow: 2px 4px 8px hsl(223, 50%, 87%); margin-bottom: 4rem}
+    .panel-text {padding: 1rem; font-size: 1rem; color: hsl(225, 20%, 60%); font-weight: bold;}
+
+    .slider {width: 80%; margin-left: auto; margin-right: auto; -webkit-appearance: none; background-color: hsl(224, 65%, 95%); border-radius: 10px; height: 0.5rem; margin-bottom: 2rem; color: blue; cursor: pointer;
+       background: linear-gradient(to right, hsl(174, 77%, 80%) 50%, hsl(174, 77%, 80%) 50%, hsl(224, 65%, 95%) 50%, hsl(224, 65%, 95%) 50%); -webkit-appearance: none;}
+    .slider-container {display: flex; flex-wrap: wrap; justify-content: center; align-items: center;}
+
+    .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  color: black;
+  background-image: url('images/icon-slider.svg');
+  background-color: hsl(174, 86%, 45%);
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-box-shadow: 6px 6px 8px hsl(174, 77%, 80%);
+  -moz-box-shadow: 6px 6px 8px hsl(174, 77%, 80%);
+  box-shadow: 6px 6px 8px hsl(174, 77%, 80%);}
+
+  .panel-text-small {font-size: 0.7rem; color: hsl(225, 20%, 60%); font-weight: bold;}
+
+  .discount-text {color:  hsl(15, 100%, 70%); padding: 0rem; height: 50%; background-color: hsl(14, 92%, 95%); border-radius: 15px; padding: 0.2rem}
+
+  .mobile-text {hidden: true}
+
+
+
+/** Switch
+ -------------------------------------*/
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+}
+
+/**
+ * 1. Adjust this to size
+ */
+
+.switch {
+  display: inline-block;
+  font-size: 20px; /* 1 */
+  height: 1em;
+  width: 2em;
+  background: hsl(223, 50%, 87%);
+  border-radius: 1em;
+}
+
+.switch div {
+  height: 1em;
+  width: 1em;
+  border-radius: 1em;
+  background: #FFF;
+  -webkit-transition: all 300ms;
+     -moz-transition: all 300ms;
+          transition: all 300ms;
+}
+
+.switch input:checked + div {
+  -webkit-transform: translate3d(100%, 0, 0);
+     -moz-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+}
+
+
+.padding-panel {padding: 0.5rem}
+
+hr {border: solid 1px hsl(224, 65%, 95%)}
+
+.start-button {border: none; background-color: white; cursor: pointer;}
+.start-text {padding: 0.2rem; background-color: hsl(227, 35%, 25%); color: hsl(224, 65%, 95%); border-radius: 25px; font-size: 0.6rem; padding-left: 2rem; padding-right: 2rem; padding-top: 0.6rem; padding-bottom: 0.6rem}
+
+.mobile-text {visibility: hidden; display: none;}
+
+.discount-big {display: inline-block;}
+.discount-small {display: none;}
+
+.ct-big {display: inline-block;}
+.ct-small {display: none;}
+
+.arrow {align-self:center; padding-right: 0.5rem}
+
+
+@media screen and (max-width: 900px) {
+  .panel {width: 90%}
+  .flex-row-top {display: flex; flex-wrap: wrap; justify-content: center; align-items: center; flex-flow: column;}
+  .views {text-align: center; margin-bottom: 3rem; margin-top: 2rem}
+  .panel-text {padding: 0rem}
+  .mobile-text {visibility: visible;}
+  .screen-text {visibility: hidden; display: none;}
+  .discount-big {display: none;}
+  .discount-small {display: inline-block;}
+
+  .flex-row-even {flex-flow: column;}
+  .container-left {align-items: center;}
+
+  .ct-big {display: none;}
+  .ct-small {display: inline-block;}
+
+  .mobile-billing {padding-right: 0.6rem}
+}
+
+
+  </style>
+
+</head>
+
+<body>
+
+  <main>
+<div class="container">
+
+  <div class="text-container">
+  <h1 class="container-header">Simple, traffic-based pricing</h1>
+  <p class="container-text ct-big">Sign-up for our 30-day trial. No credit card required.</p>
+  <p class="container-text ct-small">Sign-up for our 30-day trial.<br> No credit card required.</p>
+  </div>
+
+
+
+  <div class="panel">
+    <div class="flex-row-top screen-text">
+    <p class="panel-text views" id="pageviews" style="width:50%">100K PAGEVIEWS</p>
+    <p class="panel-text"><span style="font-size:2rem; color:black" id="price">$16.00</span>/month</p>
+    </div>
+
+    <div class="flex-row-top mobile-text">
+    <p class="panel-text views" id="pageviews-mobile" style="width:50%">100K PAGEVIEWS</p>
+    </div>
+
+    <div class="slider-container">
+    <input id="slider" class="slider" type="range" min="0" max="20" value="10" step="5" oninput="updateText(this.value)">
+    </div>
+
+    <div class="flex-row-top mobile-text">
+    <p class="panel-text"><span style="font-size:2rem; color:black" id="price-mobile">$16.00</span>/month</p>
+    </div>
+
+    <div class="flex-row-end mobile-billing">
+    <div class="padding-panel"><p class="panel-text-small">Monthly Billing</p></div>
+    <div class="padding-panel"><label class="switch"><input type="checkbox" /><div></div></label></div>
+    <div class="padding-panel"><p class="panel-text-small">Yearly Billing</p></div>
+    <div class="padding-panel"><div><p class="panel-text-small discount-text discount-big">25% discount</p><p class="panel-text-small discount-text discount-small">-25%</p></div></div>
+    </div>
+
+    <hr>
+
+    <div class="flex-row-even">
+    <div class="container-left">
+    <div class="flex-row-left"><img src="images/icon-check.svg" class="arrow"><p class="panel-text-small">Unlimited wesbsites</p></div>
+    <div class="flex-row-left"><img src="images/icon-check.svg" class="arrow"><p class="panel-text-small">100% data ownership</p></div>
+    <div class="flex-row-left"><img src="images/icon-check.svg" class="arrow"><p class="panel-text-small">Email reports</p></div>
+    </div>
+    <button class="start-button"><p class="start-text">Start my trial</p></button>
+    </div>
+
+
+  </div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+  </main>
+
+  <!--<div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.-->
+  </div>
+</body>
+
+<script>
+function updateText(x) {
+if (x == 0) {document.getElementById("pageviews").innerHTML = "10K PAGEVIEWS";
+document.getElementById("price").innerHTML = "$8.00";
+document.getElementById("pageviews-mobile").innerHTML = "10K PAGEVIEWS";
+document.getElementById("price-mobile").innerHTML = "$8.00";
+document.getElementById("slider").style.background = "linear-gradient(to right, hsl(174, 77%, 80%) 0%, hsl(174, 77%, 80%) 0%, hsl(224, 65%, 95%) 0%, hsl(224, 65%, 95%) 0%)"
+}
+else if (x == 5) {document.getElementById("pageviews").innerHTML = "50K PAGEVIEWS";
+document.getElementById("price").innerHTML = "$12.00";
+document.getElementById("pageviews-mobile").innerHTML = "50K PAGEVIEWS";
+document.getElementById("price-mobile").innerHTML = "$12.00";
+document.getElementById("slider").style.background = "linear-gradient(to right, hsl(174, 77%, 80%) 25%, hsl(174, 77%, 80%) 25%, hsl(224, 65%, 95%) 25%, hsl(224, 65%, 95%) 25%)"
+}
+else if (x == 10) {document.getElementById("pageviews").innerHTML = "100K PAGEVIEWS";
+document.getElementById("price").innerHTML = "$16.00";
+document.getElementById("pageviews-mobile").innerHTML = "100K PAGEVIEWS";
+document.getElementById("price-mobile").innerHTML = "$16.00";
+document.getElementById("slider").style.background = "linear-gradient(to right, hsl(174, 77%, 80%) 50%, hsl(174, 77%, 80%) 50%, hsl(224, 65%, 95%) 50%, hsl(224, 65%, 95%) 50%)"
+}
+else if (x == 15) {document.getElementById("pageviews").innerHTML = "500K PAGEVIEWS";
+document.getElementById("price").innerHTML = "$24.00";
+document.getElementById("pageviews-mobile").innerHTML = "500K PAGEVIEWS";
+document.getElementById("price-mobile").innerHTML = "$24.00";
+document.getElementById("slider").style.background = "linear-gradient(to right, hsl(174, 77%, 80%) 75%, hsl(174, 77%, 80%) 75%, hsl(224, 65%, 95%) 75%, hsl(224, 65%, 95%) 75%)"
+}
+else if (x == 20) {document.getElementById("pageviews").innerHTML = "1M PAGEVIEWS";
+document.getElementById("price").innerHTML = "$36.00";
+document.getElementById("pageviews-mobile").innerHTML = "1M PAGEVIEWS";
+document.getElementById("price-mobile").innerHTML = "$36.00";
+document.getElementById("slider").style.background = "linear-gradient(to right, hsl(174, 77%, 80%) 100%, hsl(174, 77%, 80%) 100%, hsl(224, 65%, 95%) 100%, hsl(224, 65%, 95%)100%)"
+}
+}
+
+$( '.chrome input' ).on( 'input', function( ) {
+  $( this ).css( 'background', 'linear-gradient(to right, green 0%, green '+this.value +'%, #fff ' + this.value + '%, white 100%)' );
+} );
+</script>
+
+</html>
